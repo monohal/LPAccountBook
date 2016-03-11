@@ -7,10 +7,13 @@ import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.Snackbar;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
+import android.util.Log;
 import android.view.View;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.ViewGroup;
+
+import java.util.Locale;
 
 public class LPAccountBookActivity extends AppCompatActivity {
 
@@ -21,19 +24,30 @@ public class LPAccountBookActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_lpaccount_book);
-        ViewGroup viewGroup;
-        viewGroup = (ViewGroup)findViewById(R.id.activity_input);
+        View view;
+        view = findViewById(R.id.activity_input);
 
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
 
+        setLanguage();
         FirstTime();
-        inputstate.Init(this, viewGroup);
+        inputstate.Init(this, view);
+    }
+
+    public void setLanguage(){
+        Locale locale = Locale.getDefault();
+
+
     }
 
     public void onClick(View v) {
+        inputstate.getInputData(v);
+        inputstate = inputstate.ChangeState(this);
 
-
+        View view;
+        view = findViewById(R.id.activity_input);
+        inputstate.Init(this, view);
     }
 
     private void FirstTime(){
@@ -44,11 +58,11 @@ public class LPAccountBookActivity extends AppCompatActivity {
             AlertDialog.Builder alertDialog=new AlertDialog.Builder(this);
 
             // ダイアログの設定
-            alertDialog.setTitle("ヒント");          //タイトル
-            alertDialog.setMessage("「画面右上 メニューキー → Help」\nでヘルプが読めます。");      //内容
-            alertDialog.setIcon(android.R.drawable.ic_menu_info_details);   //アイコン設定
-            alertDialog.create();
-            alertDialog.show();
+            alertDialog.setTitle(R.string.dialog_firsttime_title)          //タイトル
+                .setMessage(R.string.dialog_firsttime_message)      //内容
+                .setIcon(android.R.drawable.ic_menu_info_details)   //アイコン設定
+                .create()
+                .show();
 
             editor.putBoolean("Launched", true);
             editor.commit();

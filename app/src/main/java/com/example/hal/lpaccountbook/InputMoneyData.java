@@ -2,8 +2,8 @@ package com.example.hal.lpaccountbook;
 
 import android.content.Context;
 import android.content.SharedPreferences;
+import android.util.Log;
 import android.view.View;
-import android.view.ViewGroup;
 import android.widget.Button;
 
 /**
@@ -14,7 +14,8 @@ public class InputMoneyData implements InputState {
     private static final String NOW_STATE = "MONEY";
     private static InputMoneyData singleton = new InputMoneyData();
 
-    SharedPreferences.Editor editor;
+    SharedPreferences.Editor money_editor;
+
     Button btnUL;
     Button btnUR;
     Button btnLL;
@@ -27,23 +28,24 @@ public class InputMoneyData implements InputState {
 
     /**
      * singletonパターン
-     * @return
      */
     public static InputState getInstance(){
         return singleton;
     }
 
     @Override
-    public void Init(Context context, ViewGroup vg){
-        SharedPreferences data = context.getSharedPreferences(MONEY_FILE_NAME, Context.MODE_PRIVATE);
-        editor = data.edit();
-        setMoneyData(data, vg);
+    public void Init(Context context, View v){
+        Log.d("OUTPUT", "IMD");
+        SharedPreferences money_data = context.getSharedPreferences(MONEY_FILE_NAME, Context.MODE_PRIVATE);
+        money_editor = money_data.edit();
+        setMoneyData(money_data, v);
     }
 
     @Override
-    public void setInputData(View v){
-        editor.putInt(MONEY_DATA, getMoneyData(v));
-        editor.apply();
+    public void getInputData(View v){
+        money_editor.putInt(MONEY_DATA, getMoneyData(v));
+        Log.d("OUTPUT", String.valueOf(getMoneyData(v)));
+        money_editor.apply();
     }
 
     @Override
@@ -56,11 +58,11 @@ public class InputMoneyData implements InputState {
         return NOW_STATE;
     }
 
-    public void setMoneyData(SharedPreferences data, ViewGroup vg){
-        btnUL = (Button)vg.findViewById(R.id.button_UL);
-        btnUR = (Button)vg.findViewById(R.id.button_UR);
-        btnLL = (Button)vg.findViewById(R.id.button_LL);
-        btnLR = (Button)vg.findViewById(R.id.button_LR);
+    public void setMoneyData(SharedPreferences data, View v){
+        btnUL = (Button) v.findViewById(R.id.button_UL);
+        btnUR = (Button) v.findViewById(R.id.button_UR);
+        btnLL = (Button) v.findViewById(R.id.button_LL);
+        btnLR = (Button) v.findViewById(R.id.button_LR);
 
         btnUL.setText(String.valueOf(data.getInt(UL, 200)));
         btnUR.setText(String.valueOf(data.getInt(UR, 500)));

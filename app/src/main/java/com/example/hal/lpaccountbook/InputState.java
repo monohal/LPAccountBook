@@ -1,6 +1,7 @@
 package com.example.hal.lpaccountbook;
 
 import android.content.Context;
+import android.content.SharedPreferences;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
@@ -16,7 +17,6 @@ public interface InputState {
     String MONEY_DATA = "MONEY";
     String STRING_DATA = "STRING";
 
-
     String UL = "hl_button";
     String UR = "hr_button";
     String LL = "ll_button";
@@ -25,17 +25,17 @@ public interface InputState {
     /**
      *  ボタンにsettextする
      */
-    void Init(Context context,ViewGroup vg);
+    void Init(Context context,View v);
 
     /**
      *  ボタンにsettextする
      * @param v ボタンをまとめたViewGroupを持ってきてます
      */
-    void setInputData(View v);
+    void getInputData(View v);
 
     /**
      *  現在の状態から次の状態へ移行
-     * @param context
+     * @param context コンテキスト
      * @return 次の状態
      */
     InputState ChangeState(Context context);
