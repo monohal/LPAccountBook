@@ -17,7 +17,7 @@ import java.util.HashMap;
  * Created by HAL on 2016/03/11.
  */
 public class DataProvider extends ContentProvider {
-    private DataBaseHelper databaseHelper;
+    private DatabaseHelper databaseHelper;
     private static final UriMatcher uriMatcher;
 
     private static final int PERSONS = 1;
@@ -38,7 +38,7 @@ public class DataProvider extends ContentProvider {
 
     @Override
     public boolean onCreate() {
-        databaseHelper = new DataBaseHelper(getContext());
+        databaseHelper = new DatabaseHelper(getContext());
         return true;
     }
 
