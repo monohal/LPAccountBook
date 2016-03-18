@@ -18,8 +18,8 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         db.execSQL(
                 "CREATE TABLE " + Database.TABLE_NAME + " ( "
                         + Data._ID + " INTEGER PRIMARY KEY AUTOINCREMENT, "
-                        + Data.NAME + " TEXT, "
-                        + Data.AGE + " INTEGER )");
+                        + Data.MONEY_DATA + " INTEGER, "
+                        + Data.STRING + " STRING )");
     }
 
     @Override

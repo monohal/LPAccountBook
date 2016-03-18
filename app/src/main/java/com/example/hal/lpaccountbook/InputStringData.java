@@ -11,10 +11,10 @@ import android.widget.Button;
  * State:String
  */
 public class InputStringData implements InputState {
-    private static final String NOW_STATE = "MONEY";
+    private static final String NOW_STATE = "STRING";
     private static InputStringData singleton = new InputStringData();
 
-    SharedPreferences.Editor money_editor;
+    SharedPreferences string_data;
     SharedPreferences.Editor string_editor;
 
     Button btnUL;
@@ -37,18 +37,14 @@ public class InputStringData implements InputState {
     @Override
     public void Init(Context context, View v){
         Log.d("OUTPUT", "ISD");
-        SharedPreferences money_data = context.getSharedPreferences(MONEY_FILE_NAME, Context.MODE_PRIVATE);
-        SharedPreferences string_data = context.getSharedPreferences(STRING_FILE_NAME, Context.MODE_PRIVATE);
-
-        money_editor = money_data.edit();
+        string_data = context.getSharedPreferences(STRING_FILE_NAME, Context.MODE_PRIVATE);
         string_editor = string_data.edit();
-
         setStringData(string_data, v);
     }
 
     @Override
     public void getInputData(View v){
-        getStringData(v);
+        string_editor.putString(STRING_DATA, getStringData(v));
         Log.d("OUTPUT", getStringData(v));
         string_editor.apply();
     }
@@ -88,4 +84,6 @@ public class InputStringData implements InputState {
         }
         return null;
     }
+
+
 }

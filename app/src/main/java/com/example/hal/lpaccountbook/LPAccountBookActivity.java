@@ -1,6 +1,7 @@
 package com.example.hal.lpaccountbook;
 
 import android.app.AlertDialog;
+import android.content.Context;
 import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
@@ -19,6 +20,10 @@ public class LPAccountBookActivity extends AppCompatActivity {
 
     public static final String FIRST_TIME_CHECK = "FIRST_TIME_CHECK";
     private InputState inputstate = InputMoneyData.getInstance();
+    SharedPreferences money_data;
+    SharedPreferences string_data;
+
+    Database database;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -29,7 +34,6 @@ public class LPAccountBookActivity extends AppCompatActivity {
 
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
-
         setLanguage();
         FirstTime();
         inputstate.Init(this, view);
@@ -43,8 +47,18 @@ public class LPAccountBookActivity extends AppCompatActivity {
 
     public void onClick(View v) {
         inputstate.getInputData(v);
-        inputstate = inputstate.ChangeState(this);
 
+        if(inputstate.getNowState() == InputState.STATE_STRING){
+            money_data = getSharedPreferences(InputState.MONEY_FILE_NAME, Context.MODE_PRIVATE);
+            string_data = getSharedPreferences(InputState.STRING_FILE_NAME, Context.MODE_PRIVATE);
+
+            int mdata = money_data.getInt(InputState.MONEY_DATA, 0);
+            String sdata = string_data.getString(InputState.STRING_DATA,"default");
+            database = new Database();
+            database.DBSave(mdata, sdata, this);
+        }
+
+        inputstate = inputstate.ChangeState(this);
         View view;
         view = findViewById(R.id.activity_input);
         inputstate.Init(this, view);

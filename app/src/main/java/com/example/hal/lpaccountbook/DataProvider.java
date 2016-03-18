@@ -20,20 +20,20 @@ public class DataProvider extends ContentProvider {
     private DatabaseHelper databaseHelper;
     private static final UriMatcher uriMatcher;
 
-    private static final int PERSONS = 1;
-    private static final int PERSON_ID = 2;
+    private static final int DATA = 1;
+    private static final int DATA_ID = 2;
 
     private static HashMap<String, String> personProjectionMap;
 
     static {
         uriMatcher = new UriMatcher(UriMatcher.NO_MATCH);
-        uriMatcher.addURI(Data.AUTHORITY, Database.TABLE_NAME, PERSONS);
-        uriMatcher.addURI(Data.AUTHORITY, Database.TABLE_NAME + "/#", PERSON_ID);
+        uriMatcher.addURI(Data.AUTHORITY, Database.TABLE_NAME, DATA);
+        uriMatcher.addURI(Data.AUTHORITY, Database.TABLE_NAME + "/#", DATA_ID);
 
         personProjectionMap = new HashMap<String, String>();
         personProjectionMap.put(Data._ID, Data._ID);
-        personProjectionMap.put(Data.NAME, Data.NAME);
-        personProjectionMap.put(Data.AGE, Data.AGE);
+        personProjectionMap.put(Data.MONEY_DATA, Data.MONEY_DATA);
+        personProjectionMap.put(Data.STRING, Data.STRING);
     }
 
     @Override
@@ -49,10 +49,10 @@ public class DataProvider extends ContentProvider {
         qb.setTables(Database.TABLE_NAME);
 
         switch (uriMatcher.match(uri)) {
-            case PERSONS:
+            case DATA:
                 qb.setProjectionMap(personProjectionMap);
                 break;
-            case PERSON_ID:
+            case DATA_ID:
                 qb.setProjectionMap(personProjectionMap);
                 qb.appendWhere(Data._ID + "=" + uri.getPathSegments().get(1));
                 break;
@@ -71,12 +71,13 @@ public class DataProvider extends ContentProvider {
 
     @Override
     public Uri insert(Uri uri, ContentValues values) {
-        if (uriMatcher.match(uri) != PERSONS) {
+        if (uriMatcher.match(uri) != DATA) {
             throw new IllegalArgumentException("Unknown URI " + uri);
         }
 
-        if (values.containsKey(Data.NAME) == false) {
-            values.put(Data.NAME, "詠み人知らず");
+        //多分いらない
+        if (values.containsKey(Data.MONEY_DATA) == false) {
+            values.put(Data.MONEY_DATA, "金額記入なし");
         }
 
         SQLiteDatabase db = databaseHelper.getWritableDatabase();
@@ -96,12 +97,12 @@ public class DataProvider extends ContentProvider {
         SQLiteDatabase db = databaseHelper.getWritableDatabase();
         int count;
         switch (uriMatcher.match(uri)) {
-            case PERSONS:
+            case DATA:
                 count = db.update(Database.TABLE_NAME, values, selection,
                         selectionArgs);
                 break;
 
-            case PERSON_ID:
+            case DATA_ID:
                 String id = uri.getPathSegments().get(1);
                 count = db.update(Database.TABLE_NAME, values, Data._ID
                         + "="
@@ -123,12 +124,12 @@ public class DataProvider extends ContentProvider {
         SQLiteDatabase db = databaseHelper.getWritableDatabase();
         int count;
         switch (uriMatcher.match(uri)) {
-            case PERSONS:
+            case DATA:
                 count = db.delete(Database.TABLE_NAME, selection,
                         selectionArgs);
                 break;
 
-            case PERSON_ID:
+            case DATA_ID:
                 String id = uri.getPathSegments().get(1);
                 count = db.delete(Database.TABLE_NAME, Data._ID
                         + "="
@@ -148,9 +149,9 @@ public class DataProvider extends ContentProvider {
     @Override
     public String getType(Uri uri) {
         switch (uriMatcher.match(uri)) {
-            case PERSONS:
+            case DATA:
                 return Data.CONTENT_TYPE;
-            case PERSON_ID:
+            case DATA_ID:
                 return Data.CONTENT_ITEM_TYPE;
 
             default:

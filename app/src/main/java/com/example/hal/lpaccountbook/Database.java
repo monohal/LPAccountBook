@@ -11,8 +11,8 @@ import android.net.Uri;
  * Created by HAL on 2016/03/11.
  */
 public class Database {
-    public static final String DATABASE_NAME = "TestDataBase";
-    public static final String TABLE_NAME = "TestDataBaseTable";
+    public static final String DATABASE_NAME = "LPAccountBook";
+    public static final String TABLE_NAME = "AccountBook";
     public static final Integer DATABASE_VERSION = 1;
 
     ContentValues values;
@@ -20,18 +20,18 @@ public class Database {
     Uri uri;
 
     /**
-     * 引数のname,ageをgetContextResolverのinsertを用いて保存
-     * @param name
-     * @param age
-     * @param context getContentResolver() のために必要
+     * 引数のmoney_data,stringをgetContextResolverのinsertを用いて保存
+     * @param money_data 金額
+     * @param string_data 区分
+     * @param context コンテキスト
      */
-    public void DBSave(String name, int age, Context context) {
+    public void DBSave(int money_data, String string_data, Context context) {
         cr = context.getContentResolver();
         uri = Data.CONTENT_URI;
 
         values = new ContentValues();
-        values.put(Data.NAME, name);
-        values.put(Data.AGE, age);
+        values.put(Data.MONEY_DATA, money_data);
+        values.put(Data.STRING, string_data);
 
         cr.insert(uri, values);
     }

@@ -13,6 +13,8 @@ import android.widget.Button;
 public interface InputState {
     String MONEY_FILE_NAME = "MONEY_DATA";
     String STRING_FILE_NAME = "STRING_DATA";
+    String STATE_MONEY = "MONEY";
+    String STATE_STRING = "STRING";
 
     String MONEY_DATA = "MONEY";
     String STRING_DATA = "STRING";

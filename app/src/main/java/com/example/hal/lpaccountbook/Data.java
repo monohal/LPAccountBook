@@ -12,6 +12,6 @@ public class Data implements BaseColumns{
     public static final String CONTENT_TYPE = "vnd.android.cursor.dir/vnd.hal.persons";
     public static final String CONTENT_ITEM_TYPE = "vnd.android.cursor.item/vnd.hal.persons";
 
-    public static final String NAME = "name";
-    public static final String AGE = "age";
+    public static final String MONEY_DATA = "money_data";
+    public static final String STRING = "age";
 }
