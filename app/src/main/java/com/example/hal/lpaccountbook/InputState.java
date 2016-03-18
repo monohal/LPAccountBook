@@ -16,8 +16,8 @@ public interface InputState {
     String STATE_MONEY = "MONEY";
     String STATE_STRING = "STRING";
 
-    String MONEY_DATA = "MONEY";
-    String STRING_DATA = "STRING";
+    String MONEY_DATA = Data.MONEY_DATA;
+    String STRING_DATA = Data.STRING_DATA;
 
     String UL = "hl_button";
     String UR = "hr_button";

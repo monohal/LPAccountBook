@@ -14,7 +14,6 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.view.ViewGroup;
 
-import java.util.Locale;
 
 public class LPAccountBookActivity extends AppCompatActivity {
 
@@ -34,16 +33,10 @@ public class LPAccountBookActivity extends AppCompatActivity {
 
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
-        setLanguage();
         FirstTime();
         inputstate.Init(this, view);
     }
 
-    public void setLanguage(){
-        Locale locale = Locale.getDefault();
-
-
-    }
 
     public void onClick(View v) {
         inputstate.getInputData(v);

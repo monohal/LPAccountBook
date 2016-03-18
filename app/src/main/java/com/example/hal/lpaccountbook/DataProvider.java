@@ -33,7 +33,7 @@ public class DataProvider extends ContentProvider {
         personProjectionMap = new HashMap<String, String>();
         personProjectionMap.put(Data._ID, Data._ID);
         personProjectionMap.put(Data.MONEY_DATA, Data.MONEY_DATA);
-        personProjectionMap.put(Data.STRING, Data.STRING);
+        personProjectionMap.put(Data.STRING_DATA, Data.STRING_DATA);
     }
 
     @Override

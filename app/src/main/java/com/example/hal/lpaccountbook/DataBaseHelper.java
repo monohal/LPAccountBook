@@ -19,7 +19,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
                 "CREATE TABLE " + Database.TABLE_NAME + " ( "
                         + Data._ID + " INTEGER PRIMARY KEY AUTOINCREMENT, "
                         + Data.MONEY_DATA + " INTEGER, "
-                        + Data.STRING + " STRING )");
+                        + Data.STRING_DATA + " STRING )");
     }
 
     @Override

@@ -31,7 +31,7 @@ public class Database {
 
         values = new ContentValues();
         values.put(Data.MONEY_DATA, money_data);
-        values.put(Data.STRING, string_data);
+        values.put(Data.STRING_DATA, string_data);
 
         cr.insert(uri, values);
     }
