@@ -18,6 +18,11 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+
+        <activity
+            android:name=".ListViewActivity">
+        </activity>
+
         <provider
             android:authorities="com.example.hal.lpaccountbook"
             android:name="com.example.hal.lpaccountbook.DataProvider"
