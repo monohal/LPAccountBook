@@ -85,14 +85,17 @@ public class LPAccountBookActivity extends AppCompatActivity {
         // automatically handle clicks on the Home/Up btnLL, so long
         // as you specify a parent activity in AndroidManifest.xml.
         int id = item.getItemId();
+        Intent intent;
 
         //noinspection SimplifiableIfStatement
         switch (id){
             case R.id.action_settings:
+                intent = new Intent(this, setDataActivity.class);
+                startActivity(intent);
                 return true;
 
             case R.id.action_listview:
-                Intent intent = new Intent(this, ListViewActivity.class);
+                intent = new Intent(this, ListViewActivity.class);
                 startActivity(intent);
                 return true;
         }

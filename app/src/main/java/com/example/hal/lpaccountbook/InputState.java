@@ -19,10 +19,10 @@ public interface InputState {
     String MONEY_DATA = Data.MONEY_DATA;
     String STRING_DATA = Data.STRING_DATA;
 
-    String UL = "hl_button";
-    String UR = "hr_button";
-    String LL = "ll_button";
-    String LR = "lr_button";
+    String UL = "upper_left";
+    String UR = "upper_right";
+    String LL = "lower_left";
+    String LR = "lower_right";
 
     /**
      *  ボタンにsettextする

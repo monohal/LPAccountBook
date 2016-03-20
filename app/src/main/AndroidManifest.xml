@@ -23,6 +23,10 @@
             android:name=".ListViewActivity">
         </activity>
 
+        <activity
+            android:name=".setDataActivity">
+        </activity>
+
         <provider
             android:authorities="com.example.hal.lpaccountbook"
             android:name="com.example.hal.lpaccountbook.DataProvider"
