@@ -1,15 +1,25 @@
 package com.example.hal.lpaccountbook;
 
 import android.app.AlertDialog;
+import android.content.ContentResolver;
+import android.content.ContentUris;
 import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
+import android.database.Cursor;
+import android.database.sqlite.SQLiteDatabase;
+import android.graphics.Color;
+import android.net.Uri;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
+import android.util.Log;
 import android.view.View;
 import android.view.Menu;
 import android.view.MenuItem;
+
+import com.echo.holographlibrary.PieGraph;
+import com.echo.holographlibrary.PieSlice;
 
 public class LPAccountBookActivity extends AppCompatActivity {
 
@@ -30,6 +40,8 @@ public class LPAccountBookActivity extends AppCompatActivity {
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
         FirstTime();
+        DrawGraph();
+
         inputstate.Init(this, view);
     }
 
@@ -101,5 +113,42 @@ public class LPAccountBookActivity extends AppCompatActivity {
         }
 
         return super.onOptionsItemSelected(item);
+    }
+
+    public void DrawGraph(){
+        DatabaseHelper helper = new DatabaseHelper(getApplicationContext());
+        SQLiteDatabase sqdb = helper.getReadableDatabase();
+
+        String col[] = new String[]{Data._ID, "TOTAL(" + Data.MONEY_DATA +")", Data.STRING_DATA};
+
+        Cursor cur = sqdb.query(
+                Database.TABLE_NAME,       //テーブル名
+                col,            //カラム名の配列
+                null,           //取得するレコードの条件
+                null,           //取得するレコードの条件
+                Data.STRING_DATA,           //GroupBy
+                null,           //Having
+                null);          //orderBy
+
+        int i;
+        String[] color = {"#99CC00","#FFBB33","#AA66CC"};
+
+        cur.moveToFirst();
+        for (i=0; i< cur.getCount(); i++) {     //query結果
+            Log.d("OUTPUT",String.valueOf(cur.getInt(0)));
+            Log.d("OUTPUT",String.valueOf(cur.getInt(1)));
+            Log.d("OUTPUT", cur.getString(2));
+            Log.d("OUTPUT","--------------------");
+
+            PieGraph graph = (PieGraph) findViewById(R.id.piegraph);
+            PieSlice slice = new PieSlice();
+            slice.setColor(Color.parseColor(color[i %3]));
+            slice.setValue(cur.getInt(1));
+            graph.addSlice(slice);
+
+            cur.moveToNext();
+        }
+
+        cur.close();
     }
 }

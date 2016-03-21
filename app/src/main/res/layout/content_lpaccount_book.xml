@@ -29,14 +29,18 @@
                 android:layout_height="fill_parent"
                 android:id="@+id/button_UL"
                 android:layout_weight="1"
-                android:onClick = "onClick"/>  <!-- UL Upper Left -->
+                android:onClick = "onClick"
+                android:alpha="0.3"
+                android:allowUndo="false" />  <!-- UL Upper Left -->
 
             <Button
                 android:layout_width="wrap_content"
                 android:layout_height="fill_parent"
                 android:id="@+id/button_UR"
                 android:layout_weight="1"
-                android:onClick = "onClick"/>  <!-- UR Upper Right -->
+                android:onClick = "onClick"
+                android:alpha="0.3"
+                android:allowUndo="false" />  <!-- UR Upper Right -->
         </LinearLayout>
 
         <LinearLayout
@@ -54,14 +58,18 @@
                 android:layout_height="fill_parent"
                 android:id="@+id/button_LL"
                 android:layout_weight="1"
-                android:onClick = "onClick"/>  <!-- LL Lower Left -->
+                android:onClick = "onClick"
+                android:alpha="0.3"
+                android:allowUndo="false" />  <!-- LL Lower Left -->
 
             <Button
                 android:layout_width="wrap_content"
                 android:layout_height="fill_parent"
                 android:id="@+id/button_LR"
                 android:layout_weight="1"
-                android:onClick = "onClick"/>   <!-- LR Lower Right -->
+                android:onClick = "onClick"
+                android:alpha="0.3"
+                android:allowUndo="false" />   <!-- LR Lower Right -->
         </LinearLayout>
     </LinearLayout>
 </RelativeLayout>

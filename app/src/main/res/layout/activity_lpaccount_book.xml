@@ -15,6 +15,11 @@
             android:background="?attr/colorPrimary" app:popupTheme="@style/AppTheme.PopupOverlay" />
 
     </android.support.design.widget.AppBarLayout>
+    <com.echo.holographlibrary.PieGraph
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:id="@+id/piegraph"
+        />
 
     <include layout="@layout/content_lpaccount_book" />
 
