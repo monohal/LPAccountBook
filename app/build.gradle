@@ -31,4 +31,12 @@ dependencies {
     compile 'com.echo:holographlibrary:1.0'
 }
 
+repositories {
+    maven { url "https://jitpack.io" }
+}
+
+dependencies {
+    compile 'com.github.PhilJay:MPAndroidChart:v2.2.3'
+}
+
 

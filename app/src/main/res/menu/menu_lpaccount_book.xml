@@ -7,4 +7,6 @@ xmlns:tools="http://schemas.android.com/tools" tools:context=".LPAccountBookActi
         android:orderInCategory="100" app:showAsAction="never" />
     <item android:id="@+id/action_listview" android:title="@string/action_listview"
         android:orderInCategory="100" app:showAsAction="never" />
+    <item android:id="@+id/action_alldelete" android:title="@string/action_listview"
+        android:orderInCategory="100" app:showAsAction="never" />
 </menu>
