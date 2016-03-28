@@ -65,10 +65,10 @@ public class InputMoneyData implements InputState {
     }
 
     public void setMoneyData(SharedPreferences data, View v){
-        btnUL = (Button) v.findViewById(R.id.button_UL);
-        btnUR = (Button) v.findViewById(R.id.button_UR);
-        btnLL = (Button) v.findViewById(R.id.button_LL);
-        btnLR = (Button) v.findViewById(R.id.button_LR);
+        btnUL = (Button) v.findViewById(R.id.back_button_UL);
+        btnUR = (Button) v.findViewById(R.id.back_button_UR);
+        btnLL = (Button) v.findViewById(R.id.back_button_LL);
+        btnLR = (Button) v.findViewById(R.id.back_button_LR);
 
         btnUL.setText(String.valueOf(data.getInt(UL, 200)));
         btnUR.setText(String.valueOf(data.getInt(UR, 500)));

@@ -10,6 +10,73 @@
     tools:showIn="@layout/activity_lpaccount_book" tools:context=".LPAccountBookActivity"
     android:id="@+id/activity_input">
 
+    <LinearLayout
+        android:orientation="vertical"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <LinearLayout
+            android:orientation="horizontal"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_alignParentTop="true"
+            android:layout_alignParentRight="true"
+            android:layout_alignParentEnd="true"
+            android:layout_weight="2">
+
+            <Button
+                android:layout_width="wrap_content"
+                android:layout_height="fill_parent"
+                android:id="@+id/back_button_UL"
+                android:layout_weight="1"
+                android:onClick = "onClick"
+                android:alpha="1"
+                android:allowUndo="false"
+                android:singleLine="false"
+                android:gravity="left|top" />  <!-- UL Upper Left -->
+
+            <Button
+                android:layout_width="wrap_content"
+                android:layout_height="fill_parent"
+                android:id="@+id/back_button_UR"
+                android:layout_weight="1"
+                android:onClick = "onClick"
+                android:alpha="1"
+                android:allowUndo="false"
+                android:gravity="right|top" />  <!-- UR Upper Right -->
+        </LinearLayout>
+
+        <LinearLayout
+            android:orientation="horizontal"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_alignParentTop="true"
+            android:layout_alignParentRight="true"
+            android:layout_alignParentEnd="true"
+            android:layout_gravity="center_vertical"
+            android:layout_weight="2">
+
+            <Button
+                android:layout_width="wrap_content"
+                android:layout_height="fill_parent"
+                android:id="@+id/back_button_LL"
+                android:layout_weight="1"
+                android:onClick = "onClick"
+                android:alpha="1"
+                android:allowUndo="false"
+                android:gravity="bottom|left" />  <!-- LL Lower Left -->
+
+            <Button
+                android:layout_width="wrap_content"
+                android:layout_height="fill_parent"
+                android:id="@+id/back_button_LR"
+                android:layout_weight="1"
+                android:onClick = "onClick"
+                android:alpha="1"
+                android:allowUndo="false"
+                android:gravity="bottom|right" />   <!-- LR Lower Right -->
+        </LinearLayout>
+    </LinearLayout>
     <FrameLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent">
@@ -21,7 +88,6 @@
             android:layout_margin="16dp"
             android:foregroundGravity="center" />
     </FrameLayout>
-
     <LinearLayout
         android:orientation="vertical"
         android:layout_width="match_parent"
@@ -42,9 +108,8 @@
                 android:id="@+id/button_UL"
                 android:layout_weight="1"
                 android:onClick = "onClick"
-                android:alpha="0.3"
-                android:allowUndo="false"
-                android:background="@drawable/button_img" />  <!-- UL Upper Left -->
+                android:alpha="0"
+                android:allowUndo="false" />  <!-- UL Upper Left -->
 
             <Button
                 android:layout_width="wrap_content"
@@ -52,7 +117,7 @@
                 android:id="@+id/button_UR"
                 android:layout_weight="1"
                 android:onClick = "onClick"
-                android:alpha="0.3"
+                android:alpha="0"
                 android:allowUndo="false" />  <!-- UR Upper Right -->
         </LinearLayout>
 
@@ -72,7 +137,7 @@
                 android:id="@+id/button_LL"
                 android:layout_weight="1"
                 android:onClick = "onClick"
-                android:alpha="0.3"
+                android:alpha="0"
                 android:allowUndo="false" />  <!-- LL Lower Left -->
 
             <Button
@@ -81,7 +146,7 @@
                 android:id="@+id/button_LR"
                 android:layout_weight="1"
                 android:onClick = "onClick"
-                android:alpha="0.3"
+                android:alpha="0"
                 android:allowUndo="false" />   <!-- LR Lower Right -->
         </LinearLayout>
     </LinearLayout>

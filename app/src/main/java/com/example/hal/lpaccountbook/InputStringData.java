@@ -60,10 +60,10 @@ public class InputStringData implements InputState {
     }
 
     public void setStringData(SharedPreferences data, View v){
-        btnUL = (Button) v.findViewById(R.id.button_UL);
-        btnUR = (Button) v.findViewById(R.id.button_UR);
-        btnLL = (Button) v.findViewById(R.id.button_LL);
-        btnLR = (Button) v.findViewById(R.id.button_LR);
+        btnUL = (Button) v.findViewById(R.id.back_button_UL);
+        btnUR = (Button) v.findViewById(R.id.back_button_UR);
+        btnLL = (Button) v.findViewById(R.id.back_button_LL);
+        btnLR = (Button) v.findViewById(R.id.back_button_LR);
 
         btnUL.setText(data.getString(UL, "食費"));
         btnUR.setText(data.getString(UR, "生活費"));

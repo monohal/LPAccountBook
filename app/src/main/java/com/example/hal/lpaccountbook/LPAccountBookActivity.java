@@ -52,7 +52,6 @@ public class LPAccountBookActivity extends AppCompatActivity {
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
         FirstTime();
-        //DrawGraph();
 
         createPieChart();
         inputstate.Init(this, view);
