@@ -4,6 +4,7 @@
     <string name="action_input">Input</string>
     <string name="action_settings">Settings</string>
     <string name="action_listview">View</string>
+    <string name="action_alldelete">All Delete</string>
 
     <string name="dialog_firsttime_title">ヒント</string>
     <string name="dialog_firsttime_message">「画面右上 メニューキー → Help」\nでヘルプが読めます。</string>

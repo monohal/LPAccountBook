@@ -39,6 +39,7 @@ public class LPAccountBookActivity extends AppCompatActivity {
     SharedPreferences string_data;
 
     Database database;
+    PieChart pieChart;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -69,6 +70,7 @@ public class LPAccountBookActivity extends AppCompatActivity {
             String sdata = string_data.getString(InputState.STRING_DATA,"default");
 
             database.DBSave(mdata, sdata, this);
+            PieChartRefresh();
         }
 
         inputstate = inputstate.ChangeState(this);
@@ -134,22 +136,27 @@ public class LPAccountBookActivity extends AppCompatActivity {
     }
 
     private void createPieChart() {
-        PieChart pieChart = (PieChart) findViewById(R.id.pie_chart);
+        pieChart = (PieChart) findViewById(R.id.pie_chart);
 
-        pieChart.setDrawHoleEnabled(true); // 真ん中に穴を空けるかどうか
-        pieChart.setHoleRadius(50f);       // 真ん中の穴の大きさ(%指定)
+        pieChart.setDrawHoleEnabled(false); // 真ん中に穴を空けるかどうか
+        //pieChart.setHoleRadius(50f);       // 真ん中の穴の大きさ(%指定)
         //pieChart.setHoleColorTransparent(true);
         pieChart.setTransparentCircleRadius(55f);
         pieChart.setRotationAngle(270);          // 開始位置の調整
-        pieChart.setRotationEnabled(true);       // 回転可能かどうか
-        pieChart.getLegend().setEnabled(true);   //
-        pieChart.setDescription("PieChart 説明");
+        pieChart.setRotationEnabled(false);       // 回転可能かどうか
+        pieChart.getLegend().setEnabled(false);   //
+        pieChart.setDescription(null);
         pieChart.setData(createPieChartData());
 
         // 更新
         pieChart.invalidate();
         // アニメーション
         pieChart.animateXY(2000, 2000); // 表示アニメーション
+    }
+
+    public void PieChartRefresh(){
+        pieChart.setData(createPieChartData());
+        pieChart.invalidate();
     }
 
     // pieChartのデータ設定
@@ -170,7 +177,7 @@ public class LPAccountBookActivity extends AppCompatActivity {
                 null,           //取得するレコードの条件
                 Data.STRING_DATA,           //GroupBy
                 null,           //Having
-                null);          //orderBy
+                "TOTAL(" + Data.MONEY_DATA +")" + " Asc");          //orderBy
 
         int i;
         String[] color = {"#99CC00", "#FFBB33", "#AA66CC", "#FF7F7F"};
@@ -185,41 +192,18 @@ public class LPAccountBookActivity extends AppCompatActivity {
             xVals.add(cur.getString(2));
             yVals.add(new Entry(cur.getInt(1),i));
             colors.add(Color.parseColor(color[i % 4]));
-
-
-            /*
-            PieGraph graph = (PieGraph) findViewById(R.id.piegraph);
-            PieSlice slice = new PieSlice();
-            slice.setColor(Color.parseColor(color[i %3]));
-            slice.setValue(cur.getInt(1));
-            graph.addSlice(slice);
-            */
-
             cur.moveToNext();
         }
 
         /*
-        xVals.add("A");
-        xVals.add("B");
-        xVals.add("C");
-        */
-
-        /*
-        yVals.add(new Entry(20, 0));
-        yVals.add(new Entry(30, 1));
-        yVals.add(new Entry(50, 2));
+        xVals.add("未使用");
+        yVals.add(new Entry(70000, i+1));
+        colors.add(Color.parseColor("#999999"));
         */
 
         PieDataSet dataSet = new PieDataSet(yVals, "Data");
         dataSet.setSliceSpace(5f);
         dataSet.setSelectionShift(1f);
-
-        // 色の設定
-        /*
-        colors.add(ColorTemplate.COLORFUL_COLORS[0]);
-        colors.add(ColorTemplate.COLORFUL_COLORS[1]);
-        colors.add(ColorTemplate.COLORFUL_COLORS[2]);
-        */
         dataSet.setColors(colors);
         dataSet.setDrawValues(true);
 
@@ -231,44 +215,5 @@ public class LPAccountBookActivity extends AppCompatActivity {
         data.setValueTextColor(Color.WHITE);
         return data;
     }
-
-    /*
-    public void DrawGraph(){
-        DatabaseHelper helper = new DatabaseHelper(getApplicationContext());
-        SQLiteDatabase sqdb = helper.getReadableDatabase();
-
-        String col[] = new String[]{Data._ID, "TOTAL(" + Data.MONEY_DATA +")", Data.STRING_DATA};
-
-        Cursor cur = sqdb.query(
-                Database.TABLE_NAME,       //テーブル名
-                col,            //カラム名の配列
-                null,           //取得するレコードの条件
-                null,           //取得するレコードの条件
-                Data.STRING_DATA,           //GroupBy
-                null,           //Having
-                null);          //orderBy
-
-        int i;
-        String[] color = {"#99CC00","#FFBB33","#AA66CC"};
-
-        cur.moveToFirst();
-        for (i=0; i< cur.getCount(); i++) {     //query結果
-            Log.d("OUTPUT",String.valueOf(cur.getInt(0)));
-            Log.d("OUTPUT",String.valueOf(cur.getInt(1)));
-            Log.d("OUTPUT", cur.getString(2));
-            Log.d("OUTPUT","--------------------");
-
-            PieGraph graph = (PieGraph) findViewById(R.id.piegraph);
-            PieSlice slice = new PieSlice();
-            slice.setColor(Color.parseColor(color[i %3]));
-            slice.setValue(cur.getInt(1));
-            graph.addSlice(slice);
-
-            cur.moveToNext();
-        }
-
-        cur.close();
-    }
-    */
 
 }

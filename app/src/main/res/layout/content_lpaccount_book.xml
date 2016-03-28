@@ -10,6 +10,18 @@
     tools:showIn="@layout/activity_lpaccount_book" tools:context=".LPAccountBookActivity"
     android:id="@+id/activity_input">
 
+    <FrameLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <com.github.mikephil.charting.charts.PieChart
+            android:id="@+id/pie_chart"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_margin="16dp"
+            android:foregroundGravity="center" />
+    </FrameLayout>
+
     <LinearLayout
         android:orientation="vertical"
         android:layout_width="match_parent"
@@ -31,7 +43,8 @@
                 android:layout_weight="1"
                 android:onClick = "onClick"
                 android:alpha="0.3"
-                android:allowUndo="false" />  <!-- UL Upper Left -->
+                android:allowUndo="false"
+                android:background="@drawable/button_img" />  <!-- UL Upper Left -->
 
             <Button
                 android:layout_width="wrap_content"
