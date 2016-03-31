@@ -14,4 +14,6 @@ public class Data implements BaseColumns{
 
     public static final String MONEY_DATA = "money_data";
     public static final String STRING_DATA = "string_data";
+    public static final String YMD_DATA = "ymd_data";
+
 }

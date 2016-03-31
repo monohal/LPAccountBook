@@ -12,7 +12,6 @@ import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
 import android.net.Uri;
 import android.os.Bundle;
-import android.provider.ContactsContract;
 import android.support.v7.app.AppCompatActivity;
 import android.view.Menu;
 import android.view.MenuItem;
@@ -51,7 +50,7 @@ public class ListViewActivity extends AppCompatActivity
 
         uri = ContentUris.withAppendedId(Data.CONTENT_URI, 1);
         Cursor cur = cr.query(uri, null, null, null, null);
-        String[] from = {Data._ID, Data.MONEY_DATA, Data.STRING_DATA};
+        String[] from = {Data.MONEY_DATA, Data.STRING_DATA, Data.YMD_DATA};
         int[] to = {R.id.listlayout_tv1, R.id.listlayout_tv2, R.id.listlayout_tv3};
 
         adapter = new SimpleCursorAdapter(this, R.layout.listviewlayout, cur, from, to, 0);
@@ -60,7 +59,7 @@ public class ListViewActivity extends AppCompatActivity
 
         listview.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             public void onItemClick(AdapterView<?> parent, View view, int pos, long id) {
-                helper = new DatabaseHelper(getApplicationContext());
+                helper = new DataBaseHelper(getApplicationContext());
                 SQLiteDatabase sqdb = helper.getReadableDatabase();
 
                 Cursor cur = sqdb.query(Database.TABLE_NAME,
@@ -88,7 +87,8 @@ public class ListViewActivity extends AppCompatActivity
         String[] projection = {
                 Data._ID,
                 Data.MONEY_DATA,
-                Data.STRING_DATA
+                Data.STRING_DATA,
+                Data.YMD_DATA
         };
 
         return new CursorLoader(

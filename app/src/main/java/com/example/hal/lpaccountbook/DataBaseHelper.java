@@ -7,8 +7,8 @@ import android.database.sqlite.SQLiteOpenHelper;
 /**
  * Created by HAL on 2016/03/11.
  */
-public class DatabaseHelper extends SQLiteOpenHelper {
-    public DatabaseHelper(Context c) {
+public class DataBaseHelper extends SQLiteOpenHelper {
+    public DataBaseHelper(Context c) {
         super(c, Database.DATABASE_NAME, null, Database.DATABASE_VERSION);
     }
 
@@ -18,7 +18,8 @@ public class DatabaseHelper extends SQLiteOpenHelper {
                 "CREATE TABLE " + Database.TABLE_NAME + " ( "
                         + Data._ID + " INTEGER PRIMARY KEY AUTOINCREMENT, "
                         + Data.MONEY_DATA + " INTEGER, "
-                        + Data.STRING_DATA + " STRING )");
+                        + Data.STRING_DATA + " STRING,"
+                        + Data.YMD_DATA + " INTEGER)" );
     }
 
     @Override

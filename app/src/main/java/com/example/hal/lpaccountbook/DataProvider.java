@@ -17,7 +17,7 @@ import java.util.HashMap;
  * Created by HAL on 2016/03/11.
  */
 public class DataProvider extends ContentProvider {
-    private DatabaseHelper databaseHelper;
+    private DataBaseHelper databaseHelper;
     private static final UriMatcher uriMatcher;
 
     private static final int DATA = 1;
@@ -34,11 +34,12 @@ public class DataProvider extends ContentProvider {
         personProjectionMap.put(Data._ID, Data._ID);
         personProjectionMap.put(Data.MONEY_DATA, Data.MONEY_DATA);
         personProjectionMap.put(Data.STRING_DATA, Data.STRING_DATA);
+        personProjectionMap.put(Data.YMD_DATA, Data.YMD_DATA);
     }
 
     @Override
     public boolean onCreate() {
-        databaseHelper = new DatabaseHelper(getContext());
+        databaseHelper = new DataBaseHelper(getContext());
         return true;
     }
 

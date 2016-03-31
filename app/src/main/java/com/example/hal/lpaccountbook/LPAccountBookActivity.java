@@ -1,15 +1,12 @@
 package com.example.hal.lpaccountbook;
 
 import android.app.AlertDialog;
-import android.content.ContentResolver;
-import android.content.ContentUris;
 import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.graphics.Color;
-import android.net.Uri;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
@@ -17,18 +14,14 @@ import android.util.Log;
 import android.view.View;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.widget.DatePicker;
 
-import com.echo.holographlibrary.PieGraph;
-import com.echo.holographlibrary.PieSlice;
 import com.github.mikephil.charting.charts.PieChart;
 import com.github.mikephil.charting.data.Entry;
 import com.github.mikephil.charting.data.PieData;
 import com.github.mikephil.charting.data.PieDataSet;
 import com.github.mikephil.charting.formatter.DefaultValueFormatter;
-import com.github.mikephil.charting.formatter.PercentFormatter;
-import com.github.mikephil.charting.utils.ColorTemplate;
 
-import java.security.KeyStore;
 import java.util.ArrayList;
 
 public class LPAccountBookActivity extends AppCompatActivity {
@@ -51,6 +44,7 @@ public class LPAccountBookActivity extends AppCompatActivity {
 
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
+
         FirstTime();
 
         createPieChart();
@@ -68,7 +62,7 @@ public class LPAccountBookActivity extends AppCompatActivity {
             int mdata = money_data.getInt(InputState.MONEY_DATA, 0);
             String sdata = string_data.getString(InputState.STRING_DATA,"default");
 
-            database.DBSave(mdata, sdata, this);
+            database.DBSave(mdata, sdata, getDate(),this);
             PieChartRefresh();
         }
 
@@ -168,7 +162,7 @@ public class LPAccountBookActivity extends AppCompatActivity {
         ArrayList<String> xVals = new ArrayList<>();
         ArrayList<Integer> colors = new ArrayList<>();
 
-        DatabaseHelper helper = new DatabaseHelper(getApplicationContext());
+        DataBaseHelper helper = new DataBaseHelper(getApplicationContext());
         SQLiteDatabase sqdb = helper.getReadableDatabase();
 
         String col[] = new String[]{Data._ID, "TOTAL(" + Data.MONEY_DATA +")", Data.STRING_DATA};
@@ -199,13 +193,17 @@ public class LPAccountBookActivity extends AppCompatActivity {
         }
 
         /*
+        test
         xVals.add("未使用");
         yVals.add(new Entry(70000, i+1));
         colors.add(Color.parseColor("#999999"));
         */
 
         PieDataSet dataSet = new PieDataSet(yVals, "Data");
-        dataSet.setSliceSpace(5f);
+
+        if(i != 1){
+            dataSet.setSliceSpace(5f);
+        }
         dataSet.setSelectionShift(1f);
         dataSet.setColors(colors);
         dataSet.setDrawValues(true);
@@ -218,5 +216,19 @@ public class LPAccountBookActivity extends AppCompatActivity {
         data.setValueTextColor(Color.WHITE);
         return data;
     }
+
+    public int getDate(){
+        DatePicker datePicker = (DatePicker)findViewById(R.id.datePicker);
+
+        int year = datePicker.getYear();//年を取得
+        int month = datePicker.getMonth() + 1;//月を取得
+        int day = datePicker.getDayOfMonth();//日を取得
+        int ymd = year * 10000 + month * 100 + day;
+
+        Log.d("OUTPUT",String.valueOf(ymd));
+
+        return ymd;
+    }
+
 
 }

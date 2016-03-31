@@ -25,13 +25,14 @@ public class Database {
      * @param string_data 区分
      * @param context コンテキスト
      */
-    public void DBSave(int money_data, String string_data, Context context) {
+    public void DBSave(int money_data, String string_data, int ymd_data,Context context) {
         cr = context.getContentResolver();
         uri = Data.CONTENT_URI;
 
         values = new ContentValues();
         values.put(Data.MONEY_DATA, money_data);
         values.put(Data.STRING_DATA, string_data);
+        values.put(Data.YMD_DATA, ymd_data);
 
         cr.insert(uri, values);
     }

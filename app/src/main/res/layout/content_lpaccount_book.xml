@@ -8,152 +8,173 @@
     android:paddingBottom="@dimen/activity_vertical_margin"
     app:layout_behavior="@string/appbar_scrolling_view_behavior"
     tools:showIn="@layout/activity_lpaccount_book" tools:context=".LPAccountBookActivity"
-    android:id="@+id/activity_input">
+    android:id="@+id/activity_input"
+    android:focusableInTouchMode="false">
 
-    <LinearLayout
-        android:orientation="vertical"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:id="@+id/linearLayout">
-
-        <LinearLayout
-            android:orientation="horizontal"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:layout_alignParentTop="true"
-            android:layout_alignParentRight="true"
-            android:layout_alignParentEnd="true"
-            android:layout_weight="2">
-
-            <Button
-                android:layout_width="0dp"
-                android:layout_height="fill_parent"
-                android:id="@+id/back_button_UL"
-                android:layout_weight="1"
-                android:onClick = "onClick"
-                android:alpha="1"
-                android:allowUndo="false"
-                android:singleLine="false"
-                android:gravity="left|top"
-                android:textSize="28dp" />  <!-- UL Upper Left -->
-
-            <Button
-                android:layout_width="0dp"
-                android:layout_height="fill_parent"
-                android:id="@+id/back_button_UR"
-                android:layout_weight="1"
-                android:onClick = "onClick"
-                android:alpha="1"
-                android:allowUndo="false"
-                android:gravity="right|top"
-                android:textSize="28dp" />  <!-- UR Upper Right -->
-        </LinearLayout>
-
-        <LinearLayout
-            android:orientation="horizontal"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:layout_alignParentTop="true"
-            android:layout_alignParentRight="true"
-            android:layout_alignParentEnd="true"
-            android:layout_gravity="center_vertical"
-            android:layout_weight="2">
-
-            <Button
-                android:layout_width="0dp"
-                android:layout_height="fill_parent"
-                android:id="@+id/back_button_LL"
-                android:layout_weight="1"
-                android:onClick = "onClick"
-                android:alpha="1"
-                android:allowUndo="false"
-                android:gravity="bottom|left"
-                android:textSize="28dp" />  <!-- LL Lower Left -->
-
-            <Button
-                android:layout_width="0dp"
-                android:layout_height="fill_parent"
-                android:id="@+id/back_button_LR"
-                android:layout_weight="1"
-                android:onClick = "onClick"
-                android:alpha="1"
-                android:allowUndo="false"
-                android:gravity="bottom|right"
-                android:textSize="28dp" />   <!-- LR Lower Right -->
-        </LinearLayout>
-    </LinearLayout>
-    <FrameLayout
-        android:layout_width="match_parent"
-        android:layout_height="match_parent">
-
-        <com.github.mikephil.charting.charts.PieChart
-            android:id="@+id/pie_chart"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:layout_margin="16dp"
-            android:foregroundGravity="center" />
-    </FrameLayout>
     <LinearLayout
         android:orientation="vertical"
         android:layout_width="match_parent"
         android:layout_height="match_parent">
 
-        <LinearLayout
-            android:orientation="horizontal"
+        <DatePicker
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/datePicker"
+            android:datePickerMode="spinner"
+            android:calendarViewShown="false"
+            android:layout_weight="1" />
+
+        <FrameLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:layout_alignParentTop="true"
-            android:layout_alignParentRight="true"
-            android:layout_alignParentEnd="true"
-            android:layout_weight="2">
+            android:layout_weight="1">
 
-            <Button
-                android:layout_width="0dp"
-                android:layout_height="fill_parent"
-                android:id="@+id/button_UL"
-                android:layout_weight="1"
-                android:onClick = "onClick"
-                android:alpha="0"
-                android:allowUndo="false" />  <!-- UL Upper Left -->
+            <LinearLayout
+                android:orientation="vertical"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:id="@+id/linearLayout">
 
-            <Button
-                android:layout_width="0dp"
-                android:layout_height="fill_parent"
-                android:id="@+id/button_UR"
-                android:layout_weight="1"
-                android:onClick = "onClick"
-                android:alpha="0"
-                android:allowUndo="false" />  <!-- UR Upper Right -->
-        </LinearLayout>
+                <LinearLayout
+                    android:orientation="horizontal"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_alignParentTop="true"
+                    android:layout_alignParentRight="true"
+                    android:layout_alignParentEnd="true"
+                    android:layout_weight="2">
 
-        <LinearLayout
-            android:orientation="horizontal"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:layout_alignParentTop="true"
-            android:layout_alignParentRight="true"
-            android:layout_alignParentEnd="true"
-            android:layout_gravity="center_vertical"
-            android:layout_weight="2">
+                    <Button
+                        android:layout_width="0dp"
+                        android:layout_height="fill_parent"
+                        android:id="@+id/back_button_UL"
+                        android:layout_weight="1"
+                        android:onClick = "onClick"
+                        android:alpha="1"
+                        android:allowUndo="false"
+                        android:singleLine="false"
+                        android:gravity="left|top"
+                        android:textSize="28dp" />  <!-- UL Upper Left -->
 
-            <Button
-                android:layout_width="0dp"
-                android:layout_height="fill_parent"
-                android:id="@+id/button_LL"
-                android:layout_weight="1"
-                android:onClick = "onClick"
-                android:alpha="0"
-                android:allowUndo="false" />  <!-- LL Lower Left -->
+                    <Button
+                        android:layout_width="0dp"
+                        android:layout_height="fill_parent"
+                        android:id="@+id/back_button_UR"
+                        android:layout_weight="1"
+                        android:onClick = "onClick"
+                        android:alpha="1"
+                        android:allowUndo="false"
+                        android:gravity="right|top"
+                        android:textSize="28dp" />  <!-- UR Upper Right -->
+                </LinearLayout>
 
-            <Button
-                android:layout_width="0dp"
-                android:layout_height="fill_parent"
-                android:id="@+id/button_LR"
-                android:layout_weight="1"
-                android:onClick = "onClick"
-                android:alpha="0"
-                android:allowUndo="false" />   <!-- LR Lower Right -->
-        </LinearLayout>
+                <LinearLayout
+                    android:orientation="horizontal"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_alignParentTop="true"
+                    android:layout_alignParentRight="true"
+                    android:layout_alignParentEnd="true"
+                    android:layout_gravity="center_vertical"
+                    android:layout_weight="2">
+
+                    <Button
+                        android:layout_width="0dp"
+                        android:layout_height="fill_parent"
+                        android:id="@+id/back_button_LL"
+                        android:layout_weight="1"
+                        android:onClick = "onClick"
+                        android:alpha="1"
+                        android:allowUndo="false"
+                        android:gravity="bottom|left"
+                        android:textSize="28dp" />  <!-- LL Lower Left -->
+
+                    <Button
+                        android:layout_width="0dp"
+                        android:layout_height="fill_parent"
+                        android:id="@+id/back_button_LR"
+                        android:layout_weight="1"
+                        android:onClick = "onClick"
+                        android:alpha="1"
+                        android:allowUndo="false"
+                        android:gravity="bottom|right"
+                        android:textSize="28dp" />   <!-- LR Lower Right -->
+                </LinearLayout>
+            </LinearLayout>
+            <FrameLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
+
+                <com.github.mikephil.charting.charts.PieChart
+                    android:id="@+id/pie_chart"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_margin="16dp"
+                    android:foregroundGravity="center" />
+            </FrameLayout>
+            <LinearLayout
+                android:orientation="vertical"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
+
+                <LinearLayout
+                    android:orientation="horizontal"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_alignParentTop="true"
+                    android:layout_alignParentRight="true"
+                    android:layout_alignParentEnd="true"
+                    android:layout_weight="2">
+
+                    <Button
+                        android:layout_width="0dp"
+                        android:layout_height="fill_parent"
+                        android:id="@+id/button_UL"
+                        android:layout_weight="1"
+                        android:onClick = "onClick"
+                        android:alpha="0"
+                        android:allowUndo="false" />  <!-- UL Upper Left -->
+
+                    <Button
+                        android:layout_width="0dp"
+                        android:layout_height="fill_parent"
+                        android:id="@+id/button_UR"
+                        android:layout_weight="1"
+                        android:onClick = "onClick"
+                        android:alpha="0"
+                        android:allowUndo="false" />  <!-- UR Upper Right -->
+                </LinearLayout>
+
+                <LinearLayout
+                    android:orientation="horizontal"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_alignParentTop="true"
+                    android:layout_alignParentRight="true"
+                    android:layout_alignParentEnd="true"
+                    android:layout_gravity="center_vertical"
+                    android:layout_weight="2">
+
+                    <Button
+                        android:layout_width="0dp"
+                        android:layout_height="fill_parent"
+                        android:id="@+id/button_LL"
+                        android:layout_weight="1"
+                        android:onClick = "onClick"
+                        android:alpha="0"
+                        android:allowUndo="false" />  <!-- LL Lower Left -->
+
+                    <Button
+                        android:layout_width="0dp"
+                        android:layout_height="fill_parent"
+                        android:id="@+id/button_LR"
+                        android:layout_weight="1"
+                        android:onClick = "onClick"
+                        android:alpha="0"
+                        android:allowUndo="false" />   <!-- LR Lower Right -->
+                </LinearLayout>
+            </LinearLayout>
+        </FrameLayout>
     </LinearLayout>
 
 </RelativeLayout>
