@@ -13,7 +13,8 @@
     <LinearLayout
         android:orientation="vertical"
         android:layout_width="match_parent"
-        android:layout_height="match_parent">
+        android:layout_height="match_parent"
+        android:id="@+id/linearLayout">
 
         <LinearLayout
             android:orientation="horizontal"
@@ -25,7 +26,7 @@
             android:layout_weight="2">
 
             <Button
-                android:layout_width="wrap_content"
+                android:layout_width="0dp"
                 android:layout_height="fill_parent"
                 android:id="@+id/back_button_UL"
                 android:layout_weight="1"
@@ -33,17 +34,19 @@
                 android:alpha="1"
                 android:allowUndo="false"
                 android:singleLine="false"
-                android:gravity="left|top" />  <!-- UL Upper Left -->
+                android:gravity="left|top"
+                android:textSize="28dp" />  <!-- UL Upper Left -->
 
             <Button
-                android:layout_width="wrap_content"
+                android:layout_width="0dp"
                 android:layout_height="fill_parent"
                 android:id="@+id/back_button_UR"
                 android:layout_weight="1"
                 android:onClick = "onClick"
                 android:alpha="1"
                 android:allowUndo="false"
-                android:gravity="right|top" />  <!-- UR Upper Right -->
+                android:gravity="right|top"
+                android:textSize="28dp" />  <!-- UR Upper Right -->
         </LinearLayout>
 
         <LinearLayout
@@ -57,24 +60,26 @@
             android:layout_weight="2">
 
             <Button
-                android:layout_width="wrap_content"
+                android:layout_width="0dp"
                 android:layout_height="fill_parent"
                 android:id="@+id/back_button_LL"
                 android:layout_weight="1"
                 android:onClick = "onClick"
                 android:alpha="1"
                 android:allowUndo="false"
-                android:gravity="bottom|left" />  <!-- LL Lower Left -->
+                android:gravity="bottom|left"
+                android:textSize="28dp" />  <!-- LL Lower Left -->
 
             <Button
-                android:layout_width="wrap_content"
+                android:layout_width="0dp"
                 android:layout_height="fill_parent"
                 android:id="@+id/back_button_LR"
                 android:layout_weight="1"
                 android:onClick = "onClick"
                 android:alpha="1"
                 android:allowUndo="false"
-                android:gravity="bottom|right" />   <!-- LR Lower Right -->
+                android:gravity="bottom|right"
+                android:textSize="28dp" />   <!-- LR Lower Right -->
         </LinearLayout>
     </LinearLayout>
     <FrameLayout
@@ -103,7 +108,7 @@
             android:layout_weight="2">
 
             <Button
-                android:layout_width="wrap_content"
+                android:layout_width="0dp"
                 android:layout_height="fill_parent"
                 android:id="@+id/button_UL"
                 android:layout_weight="1"
@@ -112,7 +117,7 @@
                 android:allowUndo="false" />  <!-- UL Upper Left -->
 
             <Button
-                android:layout_width="wrap_content"
+                android:layout_width="0dp"
                 android:layout_height="fill_parent"
                 android:id="@+id/button_UR"
                 android:layout_weight="1"
@@ -132,7 +137,7 @@
             android:layout_weight="2">
 
             <Button
-                android:layout_width="wrap_content"
+                android:layout_width="0dp"
                 android:layout_height="fill_parent"
                 android:id="@+id/button_LL"
                 android:layout_weight="1"
@@ -141,7 +146,7 @@
                 android:allowUndo="false" />  <!-- LL Lower Left -->
 
             <Button
-                android:layout_width="wrap_content"
+                android:layout_width="0dp"
                 android:layout_height="fill_parent"
                 android:id="@+id/button_LR"
                 android:layout_weight="1"
@@ -150,4 +155,5 @@
                 android:allowUndo="false" />   <!-- LR Lower Right -->
         </LinearLayout>
     </LinearLayout>
+
 </RelativeLayout>

@@ -142,6 +142,7 @@ public class ListViewActivity extends AppCompatActivity
                 intent = new Intent(this, ListViewActivity.class);
                 startActivity(intent);
                 return true;
+
         }
 
         return super.onOptionsItemSelected(item);

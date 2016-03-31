@@ -94,6 +94,7 @@ public class setDataActivity extends AppCompatActivity {
     }
 
 
+
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         // Inflate the menu; this adds items to the action bar if it is present.
@@ -111,6 +112,11 @@ public class setDataActivity extends AppCompatActivity {
 
         //noinspection SimplifiableIfStatement
         switch (id){
+            case R.id.action_input:
+                intent = new Intent(this, LPAccountBookActivity.class);
+                startActivity(intent);
+                return true;
+
             case R.id.action_settings:
                 intent = new Intent(this, setDataActivity.class);
                 startActivity(intent);
@@ -124,5 +130,4 @@ public class setDataActivity extends AppCompatActivity {
 
         return super.onOptionsItemSelected(item);
     }
-
 }

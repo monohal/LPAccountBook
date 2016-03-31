@@ -115,6 +115,11 @@ public class LPAccountBookActivity extends AppCompatActivity {
 
         //noinspection SimplifiableIfStatement
         switch (id){
+            case R.id.action_input:
+                intent = new Intent(this, LPAccountBookActivity.class);
+                startActivity(intent);
+                return true;
+
             case R.id.action_settings:
                 intent = new Intent(this, setDataActivity.class);
                 startActivity(intent);
@@ -130,7 +135,6 @@ public class LPAccountBookActivity extends AppCompatActivity {
                 return true;
 
         }
-
         return super.onOptionsItemSelected(item);
     }
 
