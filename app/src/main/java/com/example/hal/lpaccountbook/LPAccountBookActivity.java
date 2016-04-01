@@ -33,20 +33,18 @@ public class LPAccountBookActivity extends AppCompatActivity {
 
     Database database;
     PieChart pieChart;
+    View view;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_lpaccount_book);
-        View view;
-        view = findViewById(R.id.activity_input);
+        View view = findViewById(R.id.activity_input);
+        Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         database = new Database();
 
-        Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
-
         FirstTime();
-
         createPieChart();
         inputstate.Init(this, view);
     }
@@ -65,12 +63,8 @@ public class LPAccountBookActivity extends AppCompatActivity {
             database.DBSave(mdata, sdata, getDate(),this);
             PieChartRefresh();
         }
-
         inputstate = inputstate.ChangeState(this);
-        View view;
-        view = findViewById(R.id.activity_input);
         inputstate.Init(this, view);
-
     }
 
     private void FirstTime(){
@@ -127,7 +121,6 @@ public class LPAccountBookActivity extends AppCompatActivity {
             case R.id.action_alldelete:
                 database.DBDelete(this);
                 return true;
-
         }
         return super.onOptionsItemSelected(item);
     }
@@ -165,6 +158,8 @@ public class LPAccountBookActivity extends AppCompatActivity {
         DataBaseHelper helper = new DataBaseHelper(getApplicationContext());
         SQLiteDatabase sqdb = helper.getReadableDatabase();
 
+        int i;
+
         String col[] = new String[]{Data._ID, "TOTAL(" + Data.MONEY_DATA +")", Data.STRING_DATA};
 
         Cursor cur = sqdb.query(
@@ -176,9 +171,6 @@ public class LPAccountBookActivity extends AppCompatActivity {
                 null,           //Having
                 "TOTAL(" + Data.MONEY_DATA +")" + " Asc");          //orderBy
 
-        int i;
-        String[] color = {"#99CC00", "#FFBB33", "#AA66CC", "#FF7F7F"};
-
         cur.moveToFirst();
         for (i=0; i< cur.getCount(); i++) {     //query結果
             Log.d("OUTPUT",String.valueOf(cur.getInt(0)));
@@ -188,7 +180,7 @@ public class LPAccountBookActivity extends AppCompatActivity {
 
             xVals.add(cur.getString(2));
             yVals.add(new Entry(cur.getInt(1),i));
-            colors.add(Color.parseColor(color[i % 4]));
+            colors.add(Color.parseColor(Data.COLOR_DATA[i % 4]));
             cur.moveToNext();
         }
 

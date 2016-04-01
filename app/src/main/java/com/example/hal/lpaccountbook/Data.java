@@ -16,4 +16,6 @@ public class Data implements BaseColumns{
     public static final String STRING_DATA = "string_data";
     public static final String YMD_DATA = "ymd_data";
 
+    public static final String[] COLOR_DATA = {"#99CC00", "#FFBB33", "#AA66CC", "#FF7F7F"};
+
 }

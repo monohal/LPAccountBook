@@ -45,7 +45,7 @@ public class DataProvider extends ContentProvider {
 
     @Override
     public Cursor query(Uri uri, String[] projection, String selection,
-                        String[] selectionArgs, String sortOrder) {
+            String[] selectionArgs, String sortOrder) {
         SQLiteQueryBuilder qb = new SQLiteQueryBuilder();
         qb.setTables(Database.TABLE_NAME);
 
@@ -53,6 +53,7 @@ public class DataProvider extends ContentProvider {
             case DATA:
                 qb.setProjectionMap(personProjectionMap);
                 break;
+
             case DATA_ID:
                 qb.setProjectionMap(personProjectionMap);
                 qb.appendWhere(Data._ID + "=" + uri.getPathSegments().get(1));
@@ -63,9 +64,7 @@ public class DataProvider extends ContentProvider {
         }
 
         SQLiteDatabase db = databaseHelper.getReadableDatabase();
-        Cursor c = qb.query(db, projection, selection, selectionArgs, null,
-                null, sortOrder);
-
+        Cursor c = qb.query(db, projection, selection, selectionArgs, null, null, sortOrder);
         c.setNotificationUri(getContext().getContentResolver(), uri);
         return c;
     }
@@ -94,7 +93,7 @@ public class DataProvider extends ContentProvider {
 
     @Override
     public int update(Uri uri, ContentValues values, String selection,
-                      String[] selectionArgs) {
+            String[] selectionArgs) {
         SQLiteDatabase db = databaseHelper.getWritableDatabase();
         int count;
         switch (uriMatcher.match(uri)) {
