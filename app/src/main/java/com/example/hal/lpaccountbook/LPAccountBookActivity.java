@@ -8,6 +8,7 @@ import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.graphics.Color;
 import android.os.Bundle;
+import android.support.design.widget.Snackbar;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.util.Log;
@@ -39,7 +40,7 @@ public class LPAccountBookActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_lpaccount_book);
-        View view = findViewById(R.id.activity_input);
+        view = findViewById(R.id.activity_input);
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         database = new Database();
 
@@ -62,6 +63,16 @@ public class LPAccountBookActivity extends AppCompatActivity {
 
             database.DBSave(mdata, sdata, getDate(),this);
             PieChartRefresh();
+
+            Snackbar.make(view, mdata + ":" + sdata + " Saved", Snackbar.LENGTH_LONG)
+                    .setAction("Undo", new View.OnClickListener() {
+                        @Override
+                        public void onClick(View v) {
+                            database.DBUndo(getBaseContext());
+                            PieChartRefresh();
+                        }
+                    })
+                    .show();
         }
         inputstate = inputstate.ChangeState(this);
         inputstate.Init(this, view);
