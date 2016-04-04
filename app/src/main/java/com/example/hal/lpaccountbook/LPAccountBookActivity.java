@@ -27,7 +27,12 @@ import java.util.ArrayList;
 
 public class LPAccountBookActivity extends AppCompatActivity {
 
+<<<<<<< HEAD
+    //test
     public static final String FIRST_TIME_CHECK = "FIRST_TIME_CHECK";
+=======
+    
+>>>>>>> 2662b9b... section追加
     private InputState inputstate = InputMoneyData.getInstance();
     SharedPreferences money_data;
     SharedPreferences string_data;
@@ -59,7 +64,21 @@ public class LPAccountBookActivity extends AppCompatActivity {
             string_data = getSharedPreferences(InputState.STRING_FILE_NAME, Context.MODE_PRIVATE);
 
             int mdata = money_data.getInt(InputState.MONEY_DATA, 0);
+<<<<<<< HEAD
             String sdata = string_data.getString(InputState.STRING_DATA,"default");
+=======
+            String sdata = string_data.getString(InputState.STRING_DATA, "default");
+
+            DatePicker datePicker = (DatePicker)findViewById(R.id.datePicker);
+
+            SharedPreferences preference = getSharedPreferences(Data.SETTING_FILE, MODE_PRIVATE);
+            SharedPreferences.Editor editor = preference.edit();
+
+            if(preference.contains(Data.KEY_DATE) == false) {
+                editor.putString(Data.KEY_DATE, DateManage.getStringDate(datePicker) + "～");
+                editor.commit();
+            }
+>>>>>>> 2662b9b... section追加
 
             database.DBSave(mdata, sdata, getDate(),this);
             PieChartRefresh();
@@ -79,11 +98,15 @@ public class LPAccountBookActivity extends AppCompatActivity {
     }
 
     private void FirstTime(){
+<<<<<<< HEAD
         SharedPreferences preference = getSharedPreferences(FIRST_TIME_CHECK, MODE_PRIVATE);
+=======
+        SharedPreferences preference = getSharedPreferences(Data.SETTING_FILE, MODE_PRIVATE);
+>>>>>>> 2662b9b... section追加
         SharedPreferences.Editor editor = preference.edit();
 
         if(preference.getBoolean("Launched", false)==false){
-            AlertDialog.Builder alertDialog=new AlertDialog.Builder(this);
+            AlertDialog.Builder alertDialog = new AlertDialog.Builder(this);
 
             // ダイアログの設定
             alertDialog.setTitle(R.string.dialog_firsttime_title)          //タイトル
@@ -130,8 +153,24 @@ public class LPAccountBookActivity extends AppCompatActivity {
                 return true;
 
             case R.id.action_alldelete:
+<<<<<<< HEAD
                 database.DBDelete(this);
+=======
+                database.DBDelete();
+
+                //オールデリートなのでセンターに表示される日付も初期化
+                SharedPreferences preference = getSharedPreferences(Data.SETTING_FILE, MODE_PRIVATE);
+                SharedPreferences.Editor editor = preference.edit();
+                editor.remove(Data.KEY_DATE);
+                editor.commit();
+>>>>>>> 2662b9b... section追加
                 return true;
+
+            case R.id.action_changesection:
+                SectionManage sm = new SectionManage(this);
+                sm.changeSection();
+                return true;
+
         }
         return super.onOptionsItemSelected(item);
     }
@@ -223,10 +262,16 @@ public class LPAccountBookActivity extends AppCompatActivity {
     public int getDate(){
         DatePicker datePicker = (DatePicker)findViewById(R.id.datePicker);
 
+<<<<<<< HEAD
         int year = datePicker.getYear();//年を取得
         int month = datePicker.getMonth() + 1;//月を取得
         int day = datePicker.getDayOfMonth();//日を取得
         int ymd = year * 10000 + month * 100 + day;
+=======
+        SharedPreferences date = getSharedPreferences(Data.SETTING_FILE, MODE_PRIVATE);
+        String sDate = date.getString(Data.KEY_DATE, "");
+        SpannableString s = new SpannableString(sDate);
+>>>>>>> 2662b9b... section追加
 
         Log.d("OUTPUT",String.valueOf(ymd));
 

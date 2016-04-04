@@ -1,0 +1,119 @@
+[33mcommit 5938852ef5ac3c64ff881c32d7e90fdd80159ec6[m
+Author: monohal <monomonocasino@gmail.cp>
+Date:   Tue Apr 5 00:21:28 2016 +0900
+
+    test2
+
+[33mcommit 868f5ed32891ea08650d94a8f17c845dcba0a0dd[m
+Author: monohal <monomonocasino@gmail.cp>
+Date:   Tue Apr 5 00:03:03 2016 +0900
+
+    section追加
+
+[33mcommit 6bd806df49c92e6ffd4be8d687f12a4ea2e3ba80[m
+Author: monohal <monomonocasino@gmail.cp>
+Date:   Sat Apr 2 11:59:59 2016 +0900
+
+    Undo実装
+
+[33mcommit 896c89d50dc4bab2f88b973001bc082be567e082[m
+Author: monohal <monomonocasino@gmail.cp>
+Date:   Fri Apr 1 15:37:32 2016 +0900
+
+    手直し
+
+[33mcommit 26c797f8149e7c8d0b8b7839b4922543d8493138[m
+Author: monohal <monomonocasino@gmail.cp>
+Date:   Thu Mar 31 17:27:17 2016 +0900
+
+    DatePicker実装4
+
+[33mcommit da424ec75652b39e3c5e55f93afc403016b01099[m
+Author: monohal <monomonocasino@gmail.cp>
+Date:   Thu Mar 31 14:52:37 2016 +0900
+
+    細かい修正
+
+[33mcommit 2d8805d32c13e6068a92ef7fdda49572b786c218[m
+Author: monohal <monomonocasino@gmail.cp>
+Date:   Mon Mar 28 23:34:43 2016 +0900
+
+    円グラフ（ごまかし）
+
+[33mcommit 6ce7f4a26c86b779c257f9c24d5769fb01d8b966[m
+Author: monohal <monomonocasino@gmail.cp>
+Date:   Mon Mar 28 20:29:54 2016 +0900
+
+    円グラフ（9patchTest）
+
+[33mcommit eb3556dfc76dc7b7d642e73a1e7ccaefb85284ac[m
+Author: monohal <monomonocasino@gmail.cp>
+Date:   Thu Mar 24 17:37:24 2016 +0900
+
+    円グラフ（MPAndroidChart使用）
+
+[33mcommit b63bebe766861625fe709c316673e26bc6563c43[m
+Author: monohal <monomonocasino@gmail.cp>
+Date:   Mon Mar 21 21:03:24 2016 +0900
+
+    円グラフ（Loader未使用）
+
+[33mcommit 82535d4d11df99f91c291b8862791322a4b26fd0[m
+Author: monohal <monomonocasino@gmail.cp>
+Date:   Sun Mar 20 18:05:21 2016 +0900
+
+    データベース実装（要素変更まで）
+
+[33mcommit 3b7f04929b7f61abc8cbe023264502d0dadc1653[m
+Author: monohal <monomonocasino@gmail.cp>
+Date:   Sat Mar 19 13:35:02 2016 +0900
+
+    データベース実装（ListView実装）
+
+[33mcommit 521a86e3d39b4b96f7894c4715999c2b0e7acc74[m
+Author: monohal <monomonocasino@gmail.cp>
+Date:   Fri Mar 18 15:31:26 2016 +0900
+
+    データベース実装（保存できたとは言っていない）
+
+[33mcommit f2f4df64f6144539a150d2b36f7d73b078fa2f7d[m
+Author: monohal <monomonocasino@gmail.cp>
+Date:   Fri Mar 18 15:25:47 2016 +0900
+
+    データベース実装（動くとは言っていない）
+
+[33mcommit 227d85488cc274f51eda48af27b253cd0bf1a6d5[m
+Author: monohal <monomonocasino@gmail.cp>
+Date:   Fri Mar 18 14:55:13 2016 +0900
+
+    データベース実装（動くとは言っていない）
+
+[33mcommit cd8b25323dd9aabe58336c8351135b00c95cc516[m
+Author: monohal <monomonocasino@gmail.cp>
+Date:   Fri Mar 11 18:14:13 2016 +0900
+
+    怠惰な人のための家計簿
+
+[33mcommit 1477ded5b5bdb836b373275621ec945e493fbc7f[m
+Author: monohal <monomonocasino@gmail.cp>
+Date:   Fri Mar 11 18:13:30 2016 +0900
+
+    怠惰な人のための家計簿
+
+[33mcommit 8f8c454d58b5b6ea595d4a30f95e3cb4534004dd[m
+Author: mono_notePC <monomonocasino@gmail.com>
+Date:   Fri Mar 11 17:19:27 2016 +0900
+
+    データベース未実装
+
+[33mcommit 2810455e120ee529712b7cdd01831256a3cf81b0[m
+Author: monohal <monomonocasino@gmail.cp>
+Date:   Tue Mar 8 01:03:16 2016 +0900
+
+    怠惰な人のための家計簿
+
+[33mcommit 2cf0a6c9351c35242a50b1e40762440580c4aea9[m
+Author: monohal <monomonocasino@gmail.cp>
+Date:   Sun Mar 6 16:11:06 2016 +0900
+
+    Initial commit
