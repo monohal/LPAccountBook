@@ -7,10 +7,15 @@ import android.content.SharedPreferences;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.graphics.Color;
+import android.graphics.Typeface;
 import android.os.Bundle;
 import android.support.design.widget.Snackbar;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
+import android.text.SpannableString;
+import android.text.style.ForegroundColorSpan;
+import android.text.style.RelativeSizeSpan;
+import android.text.style.StyleSpan;
 import android.util.Log;
 import android.view.View;
 import android.view.Menu;
@@ -22,17 +27,12 @@ import com.github.mikephil.charting.data.Entry;
 import com.github.mikephil.charting.data.PieData;
 import com.github.mikephil.charting.data.PieDataSet;
 import com.github.mikephil.charting.formatter.DefaultValueFormatter;
+import com.github.mikephil.charting.utils.ColorTemplate;
 
 import java.util.ArrayList;
 
 public class LPAccountBookActivity extends AppCompatActivity {
-
-<<<<<<< HEAD
-    //test
     public static final String FIRST_TIME_CHECK = "FIRST_TIME_CHECK";
-=======
-    
->>>>>>> 2662b9b... section追加
     private InputState inputstate = InputMoneyData.getInstance();
     SharedPreferences money_data;
     SharedPreferences string_data;
@@ -47,7 +47,7 @@ public class LPAccountBookActivity extends AppCompatActivity {
         setContentView(R.layout.activity_lpaccount_book);
         view = findViewById(R.id.activity_input);
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
-        database = new Database();
+        database = new Database(this);
 
         setSupportActionBar(toolbar);
         FirstTime();
@@ -64,9 +64,7 @@ public class LPAccountBookActivity extends AppCompatActivity {
             string_data = getSharedPreferences(InputState.STRING_FILE_NAME, Context.MODE_PRIVATE);
 
             int mdata = money_data.getInt(InputState.MONEY_DATA, 0);
-<<<<<<< HEAD
-            String sdata = string_data.getString(InputState.STRING_DATA,"default");
-=======
+
             String sdata = string_data.getString(InputState.STRING_DATA, "default");
 
             DatePicker datePicker = (DatePicker)findViewById(R.id.datePicker);
@@ -78,16 +76,15 @@ public class LPAccountBookActivity extends AppCompatActivity {
                 editor.putString(Data.KEY_DATE, DateManage.getStringDate(datePicker) + "～");
                 editor.commit();
             }
->>>>>>> 2662b9b... section追加
 
-            database.DBSave(mdata, sdata, getDate(),this);
+            database.DBSave(mdata, sdata, DateManage.getDate(datePicker));
             PieChartRefresh();
 
             Snackbar.make(view, mdata + ":" + sdata + " Saved", Snackbar.LENGTH_LONG)
                     .setAction("Undo", new View.OnClickListener() {
                         @Override
                         public void onClick(View v) {
-                            database.DBUndo(getBaseContext());
+                            database.DBUndo();
                             PieChartRefresh();
                         }
                     })
@@ -98,11 +95,8 @@ public class LPAccountBookActivity extends AppCompatActivity {
     }
 
     private void FirstTime(){
-<<<<<<< HEAD
-        SharedPreferences preference = getSharedPreferences(FIRST_TIME_CHECK, MODE_PRIVATE);
-=======
+
         SharedPreferences preference = getSharedPreferences(Data.SETTING_FILE, MODE_PRIVATE);
->>>>>>> 2662b9b... section追加
         SharedPreferences.Editor editor = preference.edit();
 
         if(preference.getBoolean("Launched", false)==false){
@@ -153,9 +147,7 @@ public class LPAccountBookActivity extends AppCompatActivity {
                 return true;
 
             case R.id.action_alldelete:
-<<<<<<< HEAD
-                database.DBDelete(this);
-=======
+
                 database.DBDelete();
 
                 //オールデリートなのでセンターに表示される日付も初期化
@@ -163,7 +155,6 @@ public class LPAccountBookActivity extends AppCompatActivity {
                 SharedPreferences.Editor editor = preference.edit();
                 editor.remove(Data.KEY_DATE);
                 editor.commit();
->>>>>>> 2662b9b... section追加
                 return true;
 
             case R.id.action_changesection:
@@ -178,15 +169,16 @@ public class LPAccountBookActivity extends AppCompatActivity {
     private void createPieChart() {
         pieChart = (PieChart) findViewById(R.id.pie_chart);
 
-        pieChart.setDrawHoleEnabled(false); // 真ん中に穴を空けるかどうか
-        //pieChart.setHoleRadius(50f);       // 真ん中の穴の大きさ(%指定)
+        pieChart.setDrawHoleEnabled(true); // 真ん中に穴を空けるかどうか
+        pieChart.setHoleRadius(30f);       // 真ん中の穴の大きさ(%指定)
         //pieChart.setHoleColorTransparent(true);
-        pieChart.setTransparentCircleRadius(55f);
+        pieChart.setTransparentCircleRadius(30f);
         pieChart.setRotationAngle(270);          // 開始位置の調整
         pieChart.setRotationEnabled(false);       // 回転可能かどうか
         pieChart.getLegend().setEnabled(false);   //
         pieChart.setDescription(null);
         pieChart.setData(createPieChartData());
+        pieChart.setCenterText(generateCenterSpannableText());
 
         // 更新
         pieChart.invalidate();
@@ -196,6 +188,7 @@ public class LPAccountBookActivity extends AppCompatActivity {
 
     public void PieChartRefresh(){
         pieChart.setData(createPieChartData());
+        pieChart.setCenterText(generateCenterSpannableText());
         pieChart.invalidate();
     }
 
@@ -259,24 +252,10 @@ public class LPAccountBookActivity extends AppCompatActivity {
         return data;
     }
 
-    public int getDate(){
-        DatePicker datePicker = (DatePicker)findViewById(R.id.datePicker);
-
-<<<<<<< HEAD
-        int year = datePicker.getYear();//年を取得
-        int month = datePicker.getMonth() + 1;//月を取得
-        int day = datePicker.getDayOfMonth();//日を取得
-        int ymd = year * 10000 + month * 100 + day;
-=======
-        SharedPreferences date = getSharedPreferences(Data.SETTING_FILE, MODE_PRIVATE);
-        String sDate = date.getString(Data.KEY_DATE, "");
-        SpannableString s = new SpannableString(sDate);
->>>>>>> 2662b9b... section追加
-
-        Log.d("OUTPUT",String.valueOf(ymd));
-
-        return ymd;
+    private SpannableString generateCenterSpannableText() {
+        SharedPreferences preference = getSharedPreferences(Data.SETTING_FILE, MODE_PRIVATE);
+        SpannableString s = new SpannableString(preference.getString(Data.KEY_DATE,""));
+        return s;
     }
-
 
 }

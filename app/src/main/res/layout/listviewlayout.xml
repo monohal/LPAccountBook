@@ -21,12 +21,21 @@
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Age"
+            android:text="ymd"
             android:id="@+id/listlayout_tv3"
             android:layout_alignBaseline="@+id/listlayout_tv1"
             android:layout_alignBottom="@+id/listlayout_tv1"
             android:layout_alignParentRight="true"
             android:layout_alignParentEnd="false" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="section"
+            android:id="@+id/listlayout_tv4"
+            android:layout_below="@+id/listlayout_tv3"
+            android:layout_alignParentRight="true"
+            android:layout_alignParentEnd="true" />
 
         <TextView
             android:layout_width="wrap_content"

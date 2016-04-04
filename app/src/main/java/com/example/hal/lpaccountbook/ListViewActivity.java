@@ -40,7 +40,7 @@ public class ListViewActivity extends AppCompatActivity
 
         context = getApplicationContext();
         cr = getContentResolver();
-        db = new Database();
+        db = new Database(this);
 
         Output();
     }
@@ -50,8 +50,10 @@ public class ListViewActivity extends AppCompatActivity
 
         uri = ContentUris.withAppendedId(Data.CONTENT_URI, 1);
         Cursor cur = cr.query(uri, null, null, null, null);
-        String[] from = {Data.MONEY_DATA, Data.STRING_DATA, Data.YMD_DATA};
-        int[] to = {R.id.listlayout_tv1, R.id.listlayout_tv2, R.id.listlayout_tv3};
+
+        String[] from = {Data.MONEY_DATA, Data.STRING_DATA, Data.S_YMD_DATA, Data.SECTION_DATA};
+        int[] to = {R.id.listlayout_tv1, R.id.listlayout_tv2, R.id.listlayout_tv3, R.id.listlayout_tv4};
+        adapter = new SimpleCursorAdapter(this, R.layout.listviewlayout, cur, from, to, 0);
 
         adapter = new SimpleCursorAdapter(this, R.layout.listviewlayout, cur, from, to, 0);
         listview.setAdapter(adapter);
@@ -88,7 +90,9 @@ public class ListViewActivity extends AppCompatActivity
                 Data._ID,
                 Data.MONEY_DATA,
                 Data.STRING_DATA,
-                Data.YMD_DATA
+                Data.M_YMD_DATA,
+                Data.S_YMD_DATA,
+                Data.SECTION_DATA
         };
 
         return new CursorLoader(

@@ -19,7 +19,9 @@ public class DataBaseHelper extends SQLiteOpenHelper {
                         + Data._ID + " INTEGER PRIMARY KEY AUTOINCREMENT, "
                         + Data.MONEY_DATA + " INTEGER, "
                         + Data.STRING_DATA + " STRING,"
-                        + Data.YMD_DATA + " INTEGER)" );
+                        + Data.M_YMD_DATA + " INTEGER,"
+                        + Data.S_YMD_DATA + " STRING,"
+                        + Data.SECTION_DATA + " INTEGER)");
     }
 
     @Override

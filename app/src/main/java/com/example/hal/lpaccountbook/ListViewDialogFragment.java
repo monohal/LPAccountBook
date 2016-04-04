@@ -28,8 +28,8 @@ public class ListViewDialogFragment extends DialogFragment {
                 .setPositiveButton("OK", new DialogInterface.OnClickListener() {
                     @Override
                     public void onClick(DialogInterface dialog, int which) {
-                        db = new Database();
-                        db.DBDelete(intId, getActivity());
+                        db = new Database(getActivity());
+                        db.DBDelete(intId);
                     }
                 })
                 .setNegativeButton("Cancel", null);

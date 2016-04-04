@@ -34,7 +34,9 @@ public class DataProvider extends ContentProvider {
         personProjectionMap.put(Data._ID, Data._ID);
         personProjectionMap.put(Data.MONEY_DATA, Data.MONEY_DATA);
         personProjectionMap.put(Data.STRING_DATA, Data.STRING_DATA);
-        personProjectionMap.put(Data.YMD_DATA, Data.YMD_DATA);
+        personProjectionMap.put(Data.M_YMD_DATA, Data.M_YMD_DATA);
+        personProjectionMap.put(Data.S_YMD_DATA, Data.S_YMD_DATA);
+        personProjectionMap.put(Data.SECTION_DATA, Data.SECTION_DATA);
     }
 
     @Override
