@@ -27,6 +27,7 @@ import java.util.ArrayList;
 
 public class LPAccountBookActivity extends AppCompatActivity {
 
+    //test
     public static final String FIRST_TIME_CHECK = "FIRST_TIME_CHECK";
     private InputState inputstate = InputMoneyData.getInstance();
     SharedPreferences money_data;
