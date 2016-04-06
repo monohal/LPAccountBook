@@ -29,7 +29,7 @@ public class SectionManage extends Application{
         section =   preference.getInt(Data.KEY_SECTION, 1);
     }
 
-    public int getSection(){
+    public int getNowSection(){
         return this.section;
     }
 

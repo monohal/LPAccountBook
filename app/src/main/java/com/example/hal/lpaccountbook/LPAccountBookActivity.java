@@ -7,15 +7,11 @@ import android.content.SharedPreferences;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.graphics.Color;
-import android.graphics.Typeface;
 import android.os.Bundle;
 import android.support.design.widget.Snackbar;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.text.SpannableString;
-import android.text.style.ForegroundColorSpan;
-import android.text.style.RelativeSizeSpan;
-import android.text.style.StyleSpan;
 import android.util.Log;
 import android.view.View;
 import android.view.Menu;
@@ -27,7 +23,6 @@ import com.github.mikephil.charting.data.Entry;
 import com.github.mikephil.charting.data.PieData;
 import com.github.mikephil.charting.data.PieDataSet;
 import com.github.mikephil.charting.formatter.DefaultValueFormatter;
-import com.github.mikephil.charting.utils.ColorTemplate;
 
 import java.util.ArrayList;
 
@@ -128,6 +123,8 @@ public class LPAccountBookActivity extends AppCompatActivity {
         // as you specify a parent activity in AndroidManifest.xml.
         int id = item.getItemId();
         Intent intent;
+        SharedPreferences preference;
+        SharedPreferences.Editor editor;
 
         //noinspection SimplifiableIfStatement
         switch (id){
@@ -151,15 +148,18 @@ public class LPAccountBookActivity extends AppCompatActivity {
                 database.DBDelete();
 
                 //オールデリートなのでセンターに表示される日付も初期化
-                SharedPreferences preference = getSharedPreferences(Data.SETTING_FILE, MODE_PRIVATE);
-                SharedPreferences.Editor editor = preference.edit();
-                editor.remove(Data.KEY_DATE);
-                editor.commit();
+                preference = getSharedPreferences(Data.SETTING_FILE, MODE_PRIVATE);
+                editor = preference.edit();
+                DateManage.resetCenterDate(editor);
                 return true;
 
             case R.id.action_changesection:
                 SectionManage sm = new SectionManage(this);
                 sm.changeSection();
+
+                preference = getSharedPreferences(Data.SETTING_FILE, MODE_PRIVATE);
+                editor = preference.edit();
+                DateManage.resetCenterDate(editor);
                 return true;
 
         }
@@ -200,6 +200,7 @@ public class LPAccountBookActivity extends AppCompatActivity {
 
         DataBaseHelper helper = new DataBaseHelper(getApplicationContext());
         SQLiteDatabase sqdb = helper.getReadableDatabase();
+        SectionManage sm = new SectionManage(this);
 
         int i;
 
@@ -208,8 +209,8 @@ public class LPAccountBookActivity extends AppCompatActivity {
         Cursor cur = sqdb.query(
                 Database.TABLE_NAME,       //テーブル名
                 col,            //カラム名の配列
-                null,           //取得するレコードの条件
-                null,           //取得するレコードの条件
+                Data.SECTION_DATA + "=?",           //取得するレコードの条件
+                new String[] { String.valueOf(sm.getNowSection())},           //取得するレコードの条件
                 Data.STRING_DATA,           //GroupBy
                 null,           //Having
                 "TOTAL(" + Data.MONEY_DATA +")" + " Asc");          //orderBy

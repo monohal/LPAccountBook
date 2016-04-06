@@ -40,7 +40,7 @@ public class Database {
         values.put(Data.S_YMD_DATA, DateManage.convertStringDate(ymd_data));
 
         SectionManage sm = new SectionManage(context);
-        values.put(Data.SECTION_DATA, sm.getSection());
+        values.put(Data.SECTION_DATA, sm.getNowSection());
         cr.insert(uri, values);
     }
 

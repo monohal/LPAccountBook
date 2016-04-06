@@ -1,5 +1,6 @@
 package com.example.hal.lpaccountbook;
 
+import android.content.SharedPreferences;
 import android.widget.DatePicker;
 
 /**
@@ -24,5 +25,10 @@ public class DateManage {
         int month = (ymd % 10000 - day) / 100;
         int year = ymd / 10000;
         return year + "/" + month +"/"+ day;
+    }
+
+    public static void resetCenterDate(SharedPreferences.Editor editor){
+        editor.remove(Data.KEY_DATE);
+        editor.commit();
     }
 }
