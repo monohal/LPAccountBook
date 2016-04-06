@@ -30,6 +30,10 @@
             android:name=".setDataActivity">
         </activity>
 
+        <activity
+            android:name=".StackedBarViewActivity">
+        </activity>
+
         <provider
             android:authorities="com.example.hal.lpaccountbook"
             android:name="com.example.hal.lpaccountbook.DataProvider"

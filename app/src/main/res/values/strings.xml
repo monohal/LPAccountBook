@@ -4,6 +4,8 @@
     <string name="action_input">Input</string>
     <string name="action_settings">Settings</string>
     <string name="action_listview">View</string>
+    <string name="action_stackedbarview">Stacked Bar</string>
+
     <string name="action_alldelete">All Delete</string>
     <string name="action_changesection">Change Section</string>
 

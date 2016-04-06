@@ -143,6 +143,11 @@ public class LPAccountBookActivity extends AppCompatActivity {
                 startActivity(intent);
                 return true;
 
+            case R.id.action_stackedbarview:
+                intent = new Intent(this, StackedBarViewActivity.class);
+                startActivity(intent);
+                return true;
+
             case R.id.action_alldelete:
 
                 database.DBDelete();
