@@ -14,10 +14,7 @@ buildscript {
 
 allprojects {
     repositories {
-        // 1. GitHubに公開されているレポジトリを追加する
-        maven {
-            url 'https://github.com/powerje/mvn-repo/raw/master/'
-        }
+        maven { url 'https://github.com/powerje/mvn-repo/raw/master/' }
         mavenCentral()
     }
 }

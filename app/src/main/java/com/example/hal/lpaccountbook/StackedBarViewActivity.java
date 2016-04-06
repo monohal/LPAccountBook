@@ -9,10 +9,10 @@ import android.util.Log;
 import android.view.WindowManager;
 
 import com.github.mikephil.charting.charts.BarChart;
+import com.github.mikephil.charting.charts.HorizontalBarChart;
 import com.github.mikephil.charting.data.BarData;
 import com.github.mikephil.charting.data.BarDataSet;
 import com.github.mikephil.charting.data.BarEntry;
-import com.github.mikephil.charting.data.Entry;
 import com.github.mikephil.charting.interfaces.datasets.IBarDataSet;
 
 import java.util.ArrayList;
@@ -22,7 +22,7 @@ import java.util.ArrayList;
  */
 public class StackedBarViewActivity extends Activity{
 
-    BarChart sbChart;
+    HorizontalBarChart sbChart;
 
 
     @Override
@@ -31,7 +31,7 @@ public class StackedBarViewActivity extends Activity{
         getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN, WindowManager.LayoutParams.FLAG_FULLSCREEN);
         setContentView(R.layout.activity_stackedbar);
 
-        sbChart = (BarChart) findViewById(R.id.chart1);
+        sbChart = (HorizontalBarChart) findViewById(R.id.chart1);
         sbChart.setDescription("");
 
         sbChart.setMaxVisibleValueCount(60);
@@ -59,7 +59,7 @@ public class StackedBarViewActivity extends Activity{
 
         String[] xVals = new String[cur.getCount()];
         float[] yVals = new float[cur.getCount()];
-        ArrayList<BarEntry> yVals1 = new ArrayList<BarEntry>();
+        ArrayList<BarEntry> yVals1 = new ArrayList<>();
         ArrayList<Integer> colors = new ArrayList<>();
 
         cur.moveToFirst();
@@ -80,7 +80,7 @@ public class StackedBarViewActivity extends Activity{
         set1.setColors(colors);
         set1.setStackLabels(xVals);
 
-        ArrayList<IBarDataSet> dataSets = new ArrayList<IBarDataSet>();
+        ArrayList<IBarDataSet> dataSets = new ArrayList<>();
         dataSets.add(set1);
 
         BarData barData = new BarData(new String[]{"4/6~4/10"}, dataSets);

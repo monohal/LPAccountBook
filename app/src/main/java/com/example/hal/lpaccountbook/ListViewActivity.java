@@ -54,8 +54,6 @@ public class ListViewActivity extends AppCompatActivity
         String[] from = {Data.MONEY_DATA, Data.STRING_DATA, Data.S_YMD_DATA, Data.SECTION_DATA};
         int[] to = {R.id.listlayout_tv1, R.id.listlayout_tv2, R.id.listlayout_tv3, R.id.listlayout_tv4};
         adapter = new SimpleCursorAdapter(this, R.layout.listviewlayout, cur, from, to, 0);
-
-        adapter = new SimpleCursorAdapter(this, R.layout.listviewlayout, cur, from, to, 0);
         listview.setAdapter(adapter);
         getLoaderManager().initLoader(0, null, this);
 
